@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy 19th Birthday Gargourti ❤️</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              cairo: ["Cairo", "sans-serif"],
+              amiri: ["Amiri", "serif"],
+            },
+            colors: {
+              darkbg: "#0a0003",
+              darkred: "#3a0007",
+              neonred: "#ff0033",
+              neonpink: "#ff1493",
+              softpink: "#ffb6c1",
+              chatgreen: "#005c4b",
+              chatgray: "#202c33",
+              ldrpink: "#e8c5c8",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- React & ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel standalone for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #0a0003;
+        color: #f3f4f6;
+        font-family: "Cairo", sans-serif;
+        overflow-x: hidden;
+        margin: 0;
+      }
+      ::selection {
+        background: #ff0033;
+        color: #fff;
+      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0a0003; }
+      ::-webkit-scrollbar-thumb { background: #800020; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #ff0033; }
+
+      .heart-zoom-out {
+        animation: zoomOutHeart 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        transform-origin: center center;
+      }
+      @keyframes zoomOutHeart {
+        0% { transform: scale(14); opacity: 0; }
+        15% { opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      .heart-word {
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      .heart-word.word-in {
+        animation: wordPop 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      @keyframes wordPop {
+        0%   { opacity: 0; transform: scale(0.15) translateY(8px); }
+        55%  { opacity: 1; transform: scale(1.35); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+
+      .animate-pulse-glow {
+        animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 1; filter: drop-shadow(0 0 14px rgba(255, 0, 51, 0.95)); }
+        50% { opacity: 0.65; filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.4)); }
+      }
+
+      .animate-happy-birthday {
+        animation: happyBirthdayAnim 3s ease-in-out infinite alternate;
+      }
+      @keyframes happyBirthdayAnim {
+        0% { transform: scale(1); text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493; }
+        100% { transform: scale(1.06); text-shadow: 0 0 25px #ff0033, 0 0 45px #ff1493; }
+      }
+
+      .red-thread-line {
+        stroke-dasharray: 8 6;
+        animation: threadFlow 15s linear infinite;
+      }
+      @keyframes threadFlow {
+        to { stroke-dashoffset: -500; }
+      }
+
+      .glowing-box {
+        box-shadow: 0 0 25px rgba(255, 0, 51, 0.35), inset 0 0 20px rgba(255, 20, 147, 0.15);
+        border: 1px solid rgba(255, 20, 147, 0.4);
+      }
+
+      .chat-bubble-right::before {
+        content: ""; position: absolute; top: 0; right: -7px;
+        width: 0; height: 0;
+        border-top: 10px solid #005c4b; border-right: 10px solid transparent;
+      }
+      .chat-bubble-left::before {
+        content: ""; position: absolute; top: 0; left: -7px;
+        width: 0; height: 0;
+        border-top: 10px solid #202c33; border-left: 10px solid transparent;
+      }
+
+      .cake-tier {
+        background: linear-gradient(90deg, #3b000b 0%, #7a001e 50%, #3b000b 100%);
+        border-radius: 14px;
+        border-bottom: 4px solid #220005;
+        border-top: 2px solid rgba(255, 182, 193, 0.3);
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+      }
+      .cake-tier.tier-lit {
+        background: linear-gradient(90deg, #590016 0%, #b3003b 50%, #590016 100%);
+        box-shadow: 0 0 20px rgba(255, 20, 147, 0.45), inset 0 0 10px rgba(255, 255, 255, 0.2);
+        border-top: 2px solid #ff69b4;
+      }
+      .cake-tier::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 10px; right: 10px;
+        height: 6px;
+        background: repeating-linear-gradient(90deg, rgba(255,192,203,0.35) 0px, rgba(255,192,203,0.35) 12px, transparent 12px, transparent 20px);
+        border-radius: 0 0 8px 8px;
+        pointer-events: none;
+      }
+
+      .tier-text {
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.4;
+        opacity: 0;
+        transform: translateY(8px) scale(0.95);
+        filter: blur(4px);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+        pointer-events: none;
+        width: 100%;
+        overflow-wrap: anywhere;
+      }
+      .tier-text.revealed {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      .candle-wrapper {
+        position: absolute;
+        bottom: 8px;
+        z-index: 20;
+        cursor: pointer;
+        padding: 24px 10px 0 10px;
+        transition: transform 0.2s ease;
+      }
+      .candle-wrapper:hover { transform: scale(1.15); }
+      .candle-stick {
+        width: 10px;
+        height: 26px;
+        background: repeating-linear-gradient(45deg, #fff, #fff 4px, #ff1493 4px, #ff1493 8px);
+        border-radius: 3px 3px 0 0;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+      .flame {
+        width: 14px;
+        height: 20px;
+        background: radial-gradient(circle at 50% 70%, #ffffff 10%, #ffcc00 50%, #ff4500 90%);
+        border-radius: 50% 50% 25% 25%;
+        position: absolute;
+        top: -20px;
+        left: -2px;
+        animation: flicker 0.12s infinite alternate;
+        box-shadow: 0 0 12px #ff9900, 0 0 25px #ff0033;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+      .flame.blown {
+        opacity: 0 !important;
+        transform: translateY(-15px) scale(0.2) !important;
+        pointer-events: none;
+      }
+      @keyframes flicker {
+        0% { transform: scale(1) rotate(-2deg); opacity: 0.92; }
+        100% { transform: scale(1.12) rotate(2deg) translateY(-1px); opacity: 1; }
+      }
+      .smoke {
+        position: absolute;
+        top: -22px; left: 2px;
+        width: 6px; height: 6px;
+        background: rgba(200, 200, 200, 0.6);
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .smoke.puff { animation: smokePuff 1s ease-out forwards; }
+      @keyframes smokePuff {
+        0% { opacity: 0.8; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-30px) translateX(10px) scale(3.5); }
+      }
+
+      .liquid-emoji {
+        position: absolute;
+        font-size: 2.8rem;
+        transition: transform 0.12s ease-out;
+        pointer-events: none;
+        will-change: transform;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useEffect, useRef, useState, useMemo } = React;
+
+      /* ---------------- DATA ---------------- */
+      const realFightSituations = [
+        { title: "خناقة ١: التأخير بالليل 🕙", date: "25 سبتمبر", messages: [
+          { sender: "me", text: "الساعه ١٠", time: "9:46 PM" },
+          { sender: "me", text: "معلش اسف والله", time: "9:50 PM" },
+          { sender: "her", text: "هتنااام", time: "10:01 PM" } ] },
+        { title: "خناقة ٢: لما بغير عليكي 😠", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "انتي بتهدديني يعني؟", time: "1:26 PM" },
+          { sender: "me", text: "اما بغير علفكرا", time: "1:26 PM" },
+          { sender: "me", text: "انتي هناا؟", time: "1:28 PM" } ] },
+        { title: "خناقة ٣: متقولش هغور دي 😤", date: "26 سبتمبر", messages: [
+          { sender: "her", text: "ومتقولش هغور دي", time: "1:34 PM" },
+          { sender: "me", text: "انا اتقمصت و زعلت", time: "1:34 PM" },
+          { sender: "her", text: "خلاص خلاص", time: "1:34 PM" } ] },
+        { title: "خناقة ٤: جوري انتي زعلتي؟ 🥺", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "جوريي", time: "5:59 PM" },
+          { sender: "me", text: "انتي زعلتييي", time: "5:59 PM" } ] },
+        { title: "خناقة ٥: متكلمنيش! 🙈", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "هاجر", time: "6:39 PM" },
+          { sender: "me", text: "زعلانه مني لييي", time: "6:39 PM" },
+          { sender: "her", text: "متكلمنيش!", time: "6:39 PM" } ] },
+        { title: "خناقة ٦: انتا لي قولت كد 💬", date: "26 سبتمبر", messages: [
+          { sender: "her", text: "انتا لي قولت كد", time: "6:48 PM" },
+          { sender: "her", text: "مينفعش", time: "6:48 PM" },
+          { sender: "me", text: "علي ايهيي", time: "6:48 PM" } ] },
+        { title: "خناقة ٧: مفيش حاجه ييوسف 🤍", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "يهاجر عشان خاطري سامحيني", time: "6:54 PM" },
+          { sender: "me", text: "بجد انا اسفف", time: "6:55 PM" },
+          { sender: "her", text: "مفيش حاجه ييوسف", time: "6:55 PM" } ] },
+        { title: "خناقة ٨: خناقة صورة البروفايل ورقبتك 🔥", date: "26 سبتمبر", messages: [
+          { sender: "her", text: "ي اوفس", time: "7:02 PM" },
+          { sender: "me", text: "فين للاثبات في كده مش فاهم؟ و بعدين انتي اايه الي خلاكي تغيري البرفايل و البروفايل بتاعك باين في رقبتك و لنا بغيرر", time: "7:03 PM" },
+          { sender: "her", text: "عادي غيرتو", time: "7:03 PM" } ] },
+        { title: "خناقة ٩: يعني ايه عادي 🤨", date: "26 سبتمبر", messages: [
+          { sender: "her", text: "عارفه", time: "7:12 PM" },
+          { sender: "me", text: "امال بتقولي كده ليه طالما عارفه و زعلتي مني ليه ؟", time: "7:12 PM" },
+          { sender: "me", text: "يعني ايه عادي", time: "7:12 PM" } ] },
+        { title: "خناقة ١٠: مش هقول تاني 🙃", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "زي انقلاب الجيوش و كده علي الدول", time: "7:21 PM" },
+          { sender: "me", text: "انا اسففف و مش هقول تانييي", time: "7:21 PM" },
+          { sender: "me", text: "لا معملتيش خالثث🙃", time: "7:22 PM" } ] },
+        { title: "خناقة ١١: لسه زعلانة والمايك بايظ 🎙️", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "انتي الي ايهه", time: "7:32 PM" },
+          { sender: "me", text: "لسه زعلانه", time: "7:32 PM" },
+          { sender: "me", text: "بتقزلي ايه المايك بايظ بتاعك تقريبا", time: "7:33 PM" } ] },
+        { title: "خناقة ١٢: تتقمصي من مستر في المدرسة؟ 😂", date: "27 سبتمبر", messages: [
+          { sender: "her", text: "حرفيا", time: "2:30 PM" },
+          { sender: "me", text: "انا كنت بروح مدرسه اخويا لما انا دخلت واعدادي كنت بروح اودي اخويا و اشتري من العيال الي في الفصل البسكوت 😂", time: "2:33 PM" },
+          { sender: "me", text: "يلاهوي ١٦ و تتقمصي من مستر في المدرسه ؟", time: "2:34 PM" } ] },
+        { title: "خناقة ١٣: هتصالحيني 🥺", date: "27 سبتمبر", messages: [
+          { sender: "me", text: "منتي السبب", time: "10:22 PM" },
+          { sender: "me", text: "لا مزهقت انا زعلان", time: "10:23 PM" },
+          { sender: "me", text: "هتصالخيني", time: "10:23 PM" } ] },
+        { title: "خناقة ١٤: انا بجد عايزك جمبي ❤️", date: "27 سبتمبر", messages: [
+          { sender: "me", text: "انا بجد عايزك جكبي", time: "10:48 PM" },
+          { sender: "me", text: "و اوعي تكوني لسه زعلاني مني من امبارح", time: "10:48 PM" },
+          { sender: "me", text: "انتي قريتي رسايليييي", time: "10:49 PM" } ] },
+        { title: "خناقة ١٥: حقك عليا أنا آسفة 🫡❤️", date: "27 سبتمبر", messages: [
+          { sender: "her", text: "حقك عليا", time: "11:03 PM" },
+          { sender: "her", text: "انا اسفه", time: "11:03 PM" },
+          { sender: "me", text: "انا اكتر بكتييير و معندكيش اثابت بقا ها🫡", time: "11:03 PM" } ] },
+      ];
+
+      const realSweetMemories = [
+        { title: "ذكرى ١: هنتجوز بدري إن شاء الله 💍", date: "25 سبتمبر", messages: [
+          { sender: "me", text: "ايوا فعلا فرق السن هوا رقم و بعدين انيدتي بتتكلمي و انتي بتكلي و انا مش فاهم حاجه و انا هقوم اشوفلي حاجه اكلها كده عشان عظتيني", time: "6:28 PM" },
+          { sender: "me", text: "اول ما اتخرج من الكلية ممكن اجي اتقدملك و لما اخرج من الجيش نتجوز و عادي ممكن اتقدملك و انا لسه في الجامعه عادي", time: "6:29 PM" },
+          { sender: "me", text: "علفكرا انا بقلك اتقدم بدري عشان انا اساسا لو كنت هتجوز واحده قدي كنت هتجوز علي ال ٣٠ مثلا", time: "6:31 PM" } ] },
+        { title: "ذكرى ٢: جرجورتي وجوري ❤️", date: "26 سبتمبر", messages: [
+          { sender: "me", text: "استني اشوفها", time: "4:25 PM" },
+          { sender: "me", text: "جرجورتي", time: "4:49 PM" },
+          { sender: "me", text: "جوريي", time: "5:01 PM" } ] },
+        { title: "ذكرى ٣: اي الشياكه دي بغيييرررر 🙂🩴", date: "27 سبتمبر", messages: [
+          { sender: "me", text: "مش عارف البس شيبش ولل كوتش", time: "2:52 PM" },
+          { sender: "her", text: "وااااووو اي الشياكه دي بق", time: "2:53 PM" },
+          { sender: "her", text: "بغيييرررر🙂🩴", time: "2:53 PM" } ] },
+        { title: "ذكرى ٤: نداء الفجر لجرجورتي 🌙", date: "28 سبتمبر", messages: [
+          { sender: "me", text: "هااااااااااااااااااااا جر", time: "1:36 AM" },
+          { sender: "me", text: "هجورتي", time: "1:36 AM" },
+          { sender: "me", text: "جرجورتي", time: "1:36 AM" } ] },
+        { title: "ذكرى ٥: حاضر يكوتي وهات حضن 🫂♥️", date: "28 سبتمبر", messages: [
+          { sender: "me", text: "حاضر يكوتي ♥️", time: "10:53 PM" },
+          { sender: "me", text: "ولا انا بحبكبككك", time: "10:53 PM" },
+          { sender: "her", text: "هات حضن", time: "10:53 PM" } ] },
+        { title: "ذكرى ٦: مش هخليكي تحطي إيدك في حاجة 👑", date: "29 سبتمبر", messages: [
+          { sender: "her", text: "شوفت", time: "10:54 PM" },
+          { sender: "me", text: "تراك ايه ده تحفهه ها و كفاية كنيس بقا زهقت منه انا مش هخليكي تحطي ايدك في حاجه لمل نتجوز هل", time: "10:54 PM" } ] },
+        { title: "ذكرى ٧: بحبك انتا 🎮❤️", date: "30 سبتمبر", messages: [
+          { sender: "her", text: "انتو بتلعبو اييي", time: "7:19 PM" },
+          { sender: "her", text: "بحبك انتا", time: "7:19 PM" },
+          { sender: "me", text: "Peees", time: "7:19 PM" } ] },
+        { title: "ذكرى ٨: سلامتك يكتكوتي 🐣", date: "1 أكتوبر", messages: [
+          { sender: "me", text: "خدي انتي بالك من نفسك", time: "1:16 PM" },
+          { sender: "her", text: "سلامتك يكتكوتي", time: "1:16 PM" },
+          { sender: "her", text: "عيونيي", time: "1:16 PM" } ] },
+        { title: "ذكرى ٩: متتأسفش يكتكوتي 😘", date: "1 أكتوبر", messages: [
+          { sender: "me", text: "اسف", time: "8:49 PM" },
+          { sender: "her", text: "متتأسفش يكتكوتي", time: "8:49 PM" },
+          { sender: "her", text: "هات بوسه", time: "8:49 PM" } ] },
+        { title: "ذكرى ١٠: ويارب تفضل معايا 🤲❤️", date: "2 أكتوبر", messages: [
+          { sender: "me", text: "عارف و ده بجد باسطنيي جدااا", time: "3:23 AM" },
+          { sender: "her", text: "ونااا كمان بحبكككك كتيييير جدا جدااااا", time: "3:24 AM" },
+          { sender: "her", text: "ويارب تفضل معايا", time: "3:24 AM" } ] },
+        { title: "ذكرى ١١: بحبك اويي وهعورك 😂❤️", date: "2 أكتوبر", messages: [
+          { sender: "me", text: "بال ريك", time: "2:45 PM" },
+          { sender: "me", text: "بحبك اويي", time: "2:45 PM" },
+          { sender: "her", text: "هعورك", time: "2:45 PM" } ] },
+        { title: "ذكرى ١٢: بتقفي قدام المراية كتير 🪞", date: "3 أكتوبر", messages: [
+          { sender: "me", text: "ده مش شيخ الي يقول كده", time: "6:00 PM" },
+          { sender: "her", text: "م عارفه قالي انتي بتقفي قدام المرايه كتير", time: "6:00 PM" },
+          { sender: "me", text: "ماشب", time: "6:00 PM" } ] },
+        { title: "ذكرى ١٣: كلها عشروميت سنة يكتكوتي 😂", date: "4 أكتوبر", messages: [
+          { sender: "her", text: "هاانت", time: "11:53 AM" },
+          { sender: "her", text: "كلها عشروميت سنه يكتكوتي", time: "11:53 AM" },
+          { sender: "me", text: "ايه البهدلة دي كلها لا مسلسل", time: "11:56 AM" } ] },
+        { title: "ذكرى ١٤: مشوار الصبح والعربية 🚗", date: "5 أكتوبر", messages: [
+          { sender: "her", text: "فين بقا", time: "7:07 AM" },
+          { sender: "me", text: "بس بركب عربية", time: "7:07 AM" },
+          { sender: "her", text: "انا كنت باخد الفون", time: "7:07 AM" } ] },
+        { title: "ذكرى ١٥: بالهنا والشفا يكتكوتي 🥰", date: "5 أكتوبر", messages: [
+          { sender: "her", text: "ونتا فضلت تبعت", time: "9:58 PM" },
+          { sender: "her", text: "بلهنااا والشفا يكتكوتي", time: "9:58 PM" },
+          { sender: "her", text: "بجددد", time: "9:58 PM" } ] },
+        { title: "ذكرى ١٦: شطوري وبحبك اويييي ❤️", date: "6 أكتوبر", messages: [
+          { sender: "her", text: "شطورييييي", time: "10:32 PM" },
+          { sender: "her", text: "وبحبك اويييي", time: "10:32 PM" },
+          { sender: "her", text: "هااا", time: "10:32 PM" } ] },
+        { title: "ذكرى ١٧: هتسيبيني أسهر بره لما نتجوز؟ 😂", date: "7 أكتوبر", messages: [
+          { sender: "me", text: "طيب عندي فكره", time: "10:00 PM" },
+          { sender: "me", text: "انتي لما نتجوز هتسبيني اسهر بره؟", time: "10:00 PM" },
+          { sender: "her", text: "اومال", time: "10:00 PM" } ] },
+        { title: "ذكرى ١٨: الساعة 12:12 بحبككك 🕛❤️", date: "9 أكتوبر", messages: [
+          { sender: "her", text: "ونتا كمان هتوحشنييي اوييي", time: "11:52 PM" },
+          { sender: "her", text: "بحبككك", time: "12:12 AM" },
+          { sender: "her", text: "الساعه 12و 12", time: "12:12 AM" } ] },
+        { title: "ذكرى ١٩: نتجوز ومش هنزل من البيت 🏡", date: "9 أكتوبر", messages: [
+          { sender: "me", text: "يلاهوي ده صوت مريم 🤨", time: "10:32 PM" },
+          { sender: "me", text: "عادي كلها عشروميت سنه و نتجوز و مش هنزل من البيت", time: "10:32 PM" } ] },
+        { title: "ذكرى ٢٠: شوف مين الهيعملك أكل لم نتجوز 🍳😂", date: "11 أكتوبر", messages: [
+          { sender: "her", text: "وربنا ماشي", time: "7:01 PM" },
+          { sender: "her", text: "شوف مين الهيعملك اكل لم نتجوز", time: "7:01 PM" },
+          { sender: "her", text: "ماااشي", time: "7:01 PM" } ] },
+        { title: "ذكرى ٢١: حاضر يمامي 🤍", date: "12 أكتوبر", messages: [
+          { sender: "her", text: "لا", time: "8:59 PM" },
+          { sender: "me", text: "حاضر يمامي", time: "8:59 PM" },
+          { sender: "her", text: "معلش لا", time: "9:00 PM" } ] },
+        { title: "ذكرى ٢٢: لما نتجوز هتبوس إيدي؟ 👰‍♀️", date: "13 أكتوبر", messages: [
+          { sender: "her", text: "هتقمص", time: "9:27 PM" },
+          { sender: "her", text: "ايوا لم نتجوز", time: "9:27 PM" },
+          { sender: "her", text: "هتبوس ايدي؟", time: "9:27 PM" } ] },
+        { title: "ذكرى ٢٣: انتا مبتغلطش يكتكوتي!! 🥺❤️", date: "15 أكتوبر", messages: [
+          { sender: "me", text: "انا اسف", time: "8:29 PM" },
+          { sender: "her", text: "انتا مبتغلطش يكتكوتي!!", time: "8:29 PM" },
+          { sender: "her", text: "مفيش حاجه", time: "8:29 PM" } ] },
+        { title: "ذكرى ٢٤: تصبح على خير يكتكوتي هتوحشني 🌙", date: "17 أكتوبر", messages: [
+          { sender: "her", text: "وهنام", time: "2:47 AM" },
+          { sender: "her", text: "تصبح على خير يكتكوتي هتوحشني", time: "2:47 AM" },
+          { sender: "her", text: "تقريبا منمتش", time: "5:45 AM" } ] },
+        { title: "ذكرى ٢٥: هتوحشيني أوي يا مامي ❤️", date: "19 أكتوبر", messages: [
+          { sender: "me", text: "هتوحشيني اوي يا مامي", time: "11:19 PM" },
+          { sender: "me", text: "بجد بحبككك", time: "11:19 PM" },
+          { sender: "me", text: "و نفسي تفضلي جمبي", time: "11:19 PM" } ] },
+      ];
+
+      const relationshipStory = [
+        "١. أول صدفة جمعتني بيكي يوم 24/9.. الأساس اللي نور دنيتي ❤️",
+        "٢. أول مرة عيني شافت ضحكتك.. خطفتيني من وقتها ✨",
+        "٣. أول رسالة وكلام بينا.. بداية أجمل حكاية في عمري 💬",
+        "٤. خوفنا على بعض واهتمامنا اللي مبيخلصش أبداً 🤍",
+        "٥. غيرتي عليكي لما غيرتي البروفايل عشان بحبك وبخاف عليكي 😠❤️",
+        "٦. كل خناقة وقمصة زعلنا فيها ورجعنا متبتين في بعض أكتر 🤝",
+        "٧. كلمتك ليا 'سلامتك يكتكوتي' وحنيتك اللي ملهاش مثيل 🥺",
+        "٨. سهرنا وكلامنا لوش الصبح والساعة 12:12 بالليل 🌙",
+        "٩. أول مرة قلتيلي فيها 'بحبك انتا'.. الكلمة اللي غيرتني 💓",
+        "١٠. لما بتقوليلي 'انتا مبتغلطش يكتكوتي' وبتطيبى خاطري 🐣",
+        "١١. هزارنا في اللبس والشياكة لما قلتيلي 'بغيييرررر' 😂🩴",
+        "١٢. وعودنا لبعض إننا مستحيل نسيب إيد بعض مهما حصل 💍",
+        "١٣. حلمنا أول ما أتخرج وأتقدملك ونبني بيتنا سوا 🏡",
+        "١٤. أوضة الجيمنج اللي هنلعب فيها سوا في بيتنا 🎮😂",
+        "١٥. دعمنا لبعض في الدراسة والكلية وكل خطوة بنخطيها 📚",
+        "١٦. وعدي ليكي إني أشتغل على نفسي وأظبط جسمي عشانك 💪",
+        "١٧. لما نتجوز ومش هخليكي تحطي إيدك في حاجة وتكوني ملكة بيتي 👑",
+        "١٨. عيلتنا الصغيرة اللي هنبنيها بالحب والحنان في الحلال 👨‍👩‍👧",
+        "١٩. السنة الجاية أو اللي بعدها نحتفل بعيد ميلادك وإنتي مراتي في بيتنا 👰‍♀️🤵‍♂️❤️",
+      ];
+
+      const loveWordsList = [
+        "بحبك", "I Love You", "جرجورتي", "Te Amo", "Je t'aime", "بحبك أوي", "Ti Amo",
+        "كتكوتي", "Ich liebe dich", "يمامي", "Seni Seviyorum", "사랑해", "بنوتي",
+        "愛してる", "أحبك", "Eu te amo", "يا هاجر", "Σ' αγαπώ", "جورتي", "Te quiero",
+        "روحي", "Ik hou van jou", "بعشقك", "Mahal kita", "عمري", "Wo ai ni", "قلبي",
+        "Jag älskar dig", "حياتي", "Mi Vida", "نور عيني", "Amor", "سندي",
+      ];
+
+      const birthdayWordsList = [
+        "كل سنة وإنتي طيبة", "Happy Birthday", "جرجورتي", "Joyeux Anniversaire",
+        "عيد ميلاد سعيد", "Feliz Cumpleaños", "يا كتكوتي", "Buon Compleanno",
+        "عقبال مليون سنة", "생일 축하해요", "يا هاجر", "お誕生日おめでとう",
+        "19 سنة حلوة", "Feliz Aniversário", "بحبك أوي", "Alles Gute",
+        "يا محور الكون", "İYİ Kİ DOĞDUN", "يا بنوتي", "Χρόνια Πολλά",
+      ];
+
+      const START_DATE = new Date("2026-09-24T00:00:00").getTime();
+
+      /* ---------------- WORD HEART LOGIC ---------------- */
+      const WORD_COLOR = "#ff6b88";
+      const FONT_FAMILY = "Cairo, sans-serif";
+      const FONT_WEIGHT = 700;
+      const FONT_SIZE = 11.5;
+      const CX = 325;
+      const CY = 300;
+      const GAP = 7;
+      const PAD = 1.5;
+
+      function heartPoint(t, scale) {
+        const x = CX + scale * (16 * Math.pow(Math.sin(t), 3));
+        const y = CY - scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+        return { x, y };
+      }
+
+      function sampleHeart(scale, n = 900) {
+        const pts = [];
+        let total = 0;
+        for (let i = 0; i <= n; i++) {
+          const p = heartPoint((i / n) * Math.PI * 2, scale);
+          if (i > 0) total += Math.hypot(p.x - pts[i - 1].x, p.y - pts[i - 1].y);
+          pts.push({ x: p.x, y: p.y, s: total });
+        }
+        return { pts, total };
+      }
+
+      function atArc(sampled, target) {
+        const { pts, total } = sampled;
+        const s = ((target % total) + total) % total;
+        let lo = 0, hi = pts.length - 1;
+        while (lo < hi) {
+          const mid = (lo + hi) >> 1;
+          if (pts[mid].s < s) lo = mid + 1;
+          else hi = mid;
+        }
+        const idx = Math.max(2, Math.min(lo, pts.length - 3));
+        const a = pts[idx - 2];
+        const b = pts[idx + 2];
+        let angle = (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI;
+        if (angle > 90) angle -= 180;
+        if (angle < -90) angle += 180;
+        return { x: pts[idx].x, y: pts[idx].y, angle };
+      }
+
+      function corners(r) {
+        const c = Math.cos(r.a);
+        const s = Math.sin(r.a);
+        const hw = r.w / 2;
+        const hh = r.h / 2;
+        return [
+          [-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]
+        ].map(([dx, dy]) => ({ x: r.cx + dx * c - dy * s, y: r.cy + dx * s + dy * c }));
+      }
+
+      function overlap(a, b) {
+        if (Math.hypot(a.cx - b.cx, a.cy - b.cy) > (a.w + b.w + a.h + b.h) / 2) return false;
+        const ca = corners(a);
+        const cb = corners(b);
+        for (const poly of [ca, cb]) {
+          for (let i = 0; i < 4; i++) {
+            const p1 = poly[i];
+            const p2 = poly[(i + 1) % 4];
+            const nx = p2.y - p1.y;
+            const ny = p1.x - p2.x;
+            let minA = Infinity, maxA = -Infinity, minB = Infinity, maxB = -Infinity;
+            for (const p of ca) {
+              const d = p.x * nx + p.y * ny;
+              minA = Math.min(minA, d); maxA = Math.max(maxA, d);
+            }
+            for (const p of cb) {
+              const d = p.x * nx + p.y * ny;
+              minB = Math.min(minB, d); maxB = Math.max(maxB, d);
+            }
+            if (maxA < minB || maxB < minA) return false;
+          }
+        }
+        return true;
+      }
+
+      function layoutWords(words) {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.font = `${FONT_WEIGHT} ${FONT_SIZE}px ${FONT_FAMILY}`;
+
+        const placed = [];
+        const rects = [];
+        let counter = 0;
+
+        const rings = [];
+        for (let sc = 3.4; sc <= 15.9; sc += 1.55) rings.push(sc);
+        const h = FONT_SIZE * 1.2 + PAD * 2;
+
+        rings.forEach((scale) => {
+          const sampled = sampleHeart(scale);
+          const perimeter = sampled.total;
+          let cursor = 10;
+
+          while (cursor < perimeter - 14) {
+            const text = words[counter % words.length];
+            const w = ctx.measureText(text).width + PAD * 2;
+            if (cursor + w > perimeter - 8) break;
+
+            const pos = atArc(sampled, cursor + w / 2);
+            const rect = { cx: pos.x, cy: pos.y, w, h, a: (pos.angle * Math.PI) / 180 };
+
+            if (rects.some((r) => overlap(rect, r))) {
+              cursor += 3;
+              continue;
+            }
+
+            rects.push(rect);
+            placed.push({ text, x: pos.x, y: pos.y, angle: pos.angle });
+            counter++;
+            cursor += w + GAP;
+          }
+        });
+
+        return placed;
+      }
+
+      function WordHeart({ words, play, step = 26, className = "" }) {
+        const [placed, setPlaced] = useState([]);
+
+        useEffect(() => {
+          let cancelled = false;
+          const build = () => {
+            if (!cancelled) setPlaced(layoutWords(words));
+          };
+          const fontSpec = `${FONT_WEIGHT} ${FONT_SIZE}px Cairo`;
+          const sample = words.join(" ");
+          const timeout = new Promise((r) => setTimeout(r, 2500));
+          const load = document.fonts
+            ? document.fonts.load(fontSpec, sample).then(() => document.fonts.ready).then(() => undefined)
+            : Promise.resolve();
+          Promise.race([load.catch(() => undefined), timeout]).then(build);
+          return () => { cancelled = true; };
+        }, [words]);
+
+        const centerPath = useMemo(() => {
+          const pts = [];
+          for (let i = 0; i <= 100; i++) {
+            const p = heartPoint((i / 100) * Math.PI * 2, 1.65);
+            pts.push(`${i === 0 ? "M" : "L"} ${p.x.toFixed(1)},${p.y.toFixed(1)}`);
+          }
+          return pts.join(" ") + " Z";
+        }, []);
+
+        return (
+          <svg viewBox="0 0 650 650" style={{ direction: "ltr" }} className={`overflow-visible ${className}`}>
+            <path d={centerPath} fill="#ff0033" stroke="#ffffff" strokeWidth={1.5} className="animate-pulse-glow" />
+            {placed.map((w, i) => (
+              <g key={i} transform={`translate(${w.x.toFixed(1)}, ${w.y.toFixed(1)}) rotate(${w.angle.toFixed(1)})`}>
+                <text
+                  x={0}
+                  y={0}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill={WORD_COLOR}
+                  fontSize={FONT_SIZE}
+                  fontWeight={FONT_WEIGHT}
+                  fontFamily={FONT_FAMILY}
+                  className={`heart-word ${play ? "word-in" : ""}`}
+                  style={{ animationDelay: `${i * step}ms` }}
+                >
+                  {w.text}
+                </text>
+              </g>
+            ))}
+          </svg>
+        );
+      }
+
+      /* ---------------- LDR MAP ---------------- */
+      function LdrMap() {
+        const sparkles = [
+          [130, 200, 2], [165, 240, 1.5], [140, 360, 2.2], [260, 210, 2], [310, 190, 1.5], [350, 230, 2.5],
+          [390, 205, 1.8], [280, 270, 2.2], [330, 285, 1.5], [255, 340, 2], [290, 390, 2.5], [275, 430, 1.8],
+          [200, 290, 2], [220, 410, 1.5], [380, 290, 2],
+        ];
+        return (
+          <div className="relative w-full max-w-lg rounded-3xl overflow-hidden shadow-[0_0_45px_rgba(255,0,51,0.25)] border-4 border-[#e8c5c8]/30 bg-[#e8c5c8] text-black">
+            <svg viewBox="0 0 500 620" className="w-full h-auto block" style={{ direction: "ltr" }}>
+              <rect width="500" height="620" fill="#e8c5c8" />
+
+              <g fill="#8c7a78" opacity="0.88">
+                <path d="M40,220 C55,180 100,150 155,140 C180,135 205,145 190,175 C175,205 140,220 120,250 C105,270 95,295 115,310 C140,315 170,325 185,355 C195,380 170,425 145,455 C130,475 115,495 108,480 C102,460 110,420 98,390 C85,360 75,345 95,320 C75,310 55,295 45,270 Z" />
+                <path d="M225,175 C255,150 310,140 375,155 C425,165 465,195 475,240 C480,275 450,310 420,335 C395,355 370,340 345,325 C325,315 310,330 320,360 C330,390 315,435 290,460 C270,475 255,445 245,410 C235,375 205,355 200,320 C195,285 220,260 245,255 C235,235 210,200 225,175 Z" />
+                <path d="M195,535 C245,515 310,515 355,535 C330,550 240,555 195,535 Z" />
+                <path d="M435,380 C455,375 470,395 460,420 C445,435 430,405 435,380 Z" />
+              </g>
+
+              <g fill="#ffffff" opacity="0.85">
+                {sparkles.map(([x, y, r], i) => (
+                  <circle key={i} cx={x} cy={y} r={r} />
+                ))}
+                <path d="M350,180 L352,185 L357,187 L352,189 L350,194 L348,189 L343,187 L348,185 Z" />
+                <path d="M210,240 L212,245 L217,247 L212,249 L210,254 L208,249 L203,247 L208,245 Z" />
+                <path d="M160,390 L162,395 L167,397 L162,399 L160,404 L158,399 L153,397 L158,395 Z" />
+                <path d="M320,360 L322,365 L327,367 L322,369 L320,374 L318,369 L313,367 L318,365 Z" />
+              </g>
+
+              <g fill="#1c1919">
+                <path d="M 45,0 L 115,0 C 125,30 145,55 170,80 C 190,100 205,125 202,132 C 197,138 182,120 165,100 C 178,128 192,162 185,170 C 178,175 162,145 148,115 C 158,148 168,182 158,188 C 148,192 138,158 128,125 C 132,155 138,185 128,190 C 118,192 110,160 105,130 C 98,148 92,168 83,168 C 75,168 78,140 82,112 C 78,90 70,65 45,0 Z" />
+              </g>
+              <g fill="#1c1919">
+                <path d="M 490,620 L 420,620 C 405,585 385,565 355,540 C 330,520 310,492 316,484 C 322,478 342,498 360,518 C 342,488 325,452 334,444 C 342,438 362,470 378,500 C 364,465 352,430 362,424 C 372,420 385,455 398,488 C 392,455 385,425 396,420 C 406,418 415,452 422,482 C 430,462 436,442 446,442 C 455,442 452,472 446,502 C 452,530 468,560 490,620 Z" />
+              </g>
+
+              <line x1="192" y1="122" x2="326" y2="494" stroke="#ff0033" strokeWidth="5" opacity="0.35" style={{ filter: "blur(3px)" }} />
+              <line x1="192" y1="122" x2="326" y2="494" stroke="#c92a2a" strokeWidth="3" />
+              <line x1="192" y1="122" x2="326" y2="494" stroke="#ff2a4b" strokeWidth="1.5" className="red-thread-line" />
+
+              <g stroke="#c92a2a" strokeWidth="2.5" fill="none">
+                <path d="M 180,112 Q 192,108 198,118" />
+                <path d="M 183,118 Q 195,114 200,124" />
+                <path d="M 186,124 Q 194,122 197,128" />
+                <path d="M 192,122 C 182,110 175,125 190,125" />
+                <path d="M 192,122 C 204,112 208,126 193,125" />
+              </g>
+              <g stroke="#c92a2a" strokeWidth="2.5" fill="none">
+                <path d="M 318,486 Q 328,482 335,492" />
+                <path d="M 322,492 Q 332,488 338,498" />
+                <path d="M 325,498 Q 335,495 340,504" />
+                <path d="M 326,494 C 314,484 310,498 325,497" />
+                <path d="M 326,494 C 338,484 342,498 327,497" />
+              </g>
+
+              <text x="250" y="315" textAnchor="middle" fill="#111111" fontFamily="Cairo, sans-serif" fontWeight={900} fontSize="28" letterSpacing="2">
+                LDR RELATIONSHIP
+              </text>
+
+              <g transform="translate(15, 195)">
+                <rect x="0" y="0" width="195" height="36" rx="18" fill="#1a0005" opacity="0.92" stroke="#ff0033" strokeWidth="1.5" />
+                <text x="97" y="23" textAnchor="middle" fill="#ffffff" fontFamily="Cairo, sans-serif" fontWeight={700} fontSize="12">
+                  📍 أوفص: شبرا الخيمة - القليوبية
+                </text>
+              </g>
+              <g transform="translate(115, 565)">
+                <rect x="0" y="0" width="195" height="36" rx="18" fill="#1a0005" opacity="0.92" stroke="#ff1493" strokeWidth="1.5" />
+                <text x="97" y="23" textAnchor="middle" fill="#ffffff" fontFamily="Cairo, sans-serif" fontWeight={700} fontSize="12">
+                  📍 جرجورتي: ديروط - أسيوط
+                </text>
+              </g>
+            </svg>
+          </div>
+        );
+      }
+
+      /* ---------------- CHAT CARDS ---------------- */
+      function ChatCards({ data, accent }) {
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+            {data.map((s) => (
+              <div
+                key={s.title}
+                className={`bg-[#0b141a] rounded-3xl overflow-hidden border ${accent} shadow-[0_0_25px_rgba(255,0,51,0.12)] flex flex-col`}
+              >
+                <div className="bg-[#202c33] px-4 py-3 flex items-center justify-between border-b border-gray-800">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-neonred to-neonpink flex items-center justify-center font-bold text-white text-sm shadow">
+                      G❤️
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-white text-xs md:text-sm">{s.title}</span>
+                      <span className="text-[11px] text-pink-400">Gargourti • شاتنا الحقيقي</span>
+                    </div>
+                  </div>
+                  <span className="text-[11px] bg-black/40 text-gray-300 px-2.5 py-1 rounded-full shrink-0">
+                    {s.date}
+                  </span>
+                </div>
+
+                <div className="p-4 flex flex-col gap-3 flex-1 bg-[#0b141a] relative">
+                  {s.messages.map((m, i) => {
+                    const isMe = m.sender === "me";
+                    return (
+                      <div
+                        key={i}
+                        className={`relative w-fit max-w-[88%] rounded-xl p-2.5 px-3.5 shadow-md ${
+                          isMe
+                            ? "bg-chatgreen rounded-tr-none self-start chat-bubble-right"
+                            : "bg-chatgray rounded-tl-none self-end chat-bubble-left"
+                        }`}
+                      >
+                        <span
+                          className={`block text-[10px] font-bold mb-0.5 ${
+                            isMe ? "text-emerald-200" : "text-pink-400"
+                          }`}
+                        >
+                          {isMe ? "أوفص" : "جرجورتي ❤️"}
+                        </span>
+                        <p className="text-sm text-white leading-relaxed">{m.text}</p>
+                        <span className="text-[10px] text-gray-300/80 block text-left mt-1" dir="ltr">
+                          {m.time} {isMe ? "✓✓" : ""}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      }
+
+      /* ---------------- CAKE ---------------- */
+      function Cake() {
+        const TOTAL = 19;
+        const [blown, setBlown] = useState(new Set());
+        const promiseRef = useRef(null);
+        const timers = useRef([]);
+        const allDone = blown.size === TOTAL;
+
+        const blow = (n) =>
+          setBlown((prev) => {
+            if (prev.has(n)) return prev;
+            const next = new Set(prev);
+            next.add(n);
+            return next;
+          });
+
+        const blowAll = () => {
+          for (let n = 1; n <= TOTAL; n++) {
+            timers.current.push(window.setTimeout(() => blow(n), (n - 1) * 90));
+          }
+        };
+
+        useEffect(() => {
+          if (!allDone) return;
+          const t = window.setTimeout(
+            () => promiseRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+            500
+          );
+          return () => clearTimeout(t);
+        }, [allDone]);
+
+        useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+        const rows = Array.from({ length: TOTAL }, (_, row) => TOTAL - row);
+
+        return (
+          <section className="flex flex-col items-center justify-center py-24 px-2 md:px-4 bg-gradient-to-b from-darkbg via-[#1a0006] to-[#120004]">
+            <span className="bg-pink-950/80 border border-pink-600/50 text-pink-200 text-xs md:text-sm px-4 py-1.5 rounded-full mb-3">
+              🎂 تورتة عيد ميلادك الـ 19
+            </span>
+            <h2 className="text-3xl md:text-5xl font-amiri font-bold text-neonpink mb-3 text-center animate-pulse">
+              دي على قدي يها 😂❤️
+            </h2>
+            <p className="text-gray-300 text-center max-w-xl mb-4 text-sm md:text-base px-4">
+              التورتة دي 19 دور.. <span className="text-neonred font-bold">دوسي على كل شمعة عشان تطفيها</span>،
+              وأول ما تطفي أي شمعة هيظهرلك الكلام اللي كاتبهولك جوه الطبقة بتاعتها!
+            </p>
+            <div className="text-pink-300 font-bold text-sm md:text-base mb-12 bg-black/50 px-6 py-2 rounded-full border border-pink-800/50">
+              طفيتي <span className="text-neonred font-extrabold">{blown.size}</span> من{" "}
+              <span className="text-white">{TOTAL}</span> شمعة 🕯️
+            </div>
+
+            <div className="flex flex-col items-center justify-end mb-12 w-full max-w-4xl relative pt-6">
+              {rows.map((n, row) => {
+                const lit = blown.has(n);
+                const widthPct = 48 + Math.round((row / (TOTAL - 1)) * 48);
+                const candleSide = n % 2 === 0 ? "left-3 md:left-6" : "right-3 md:right-6";
+                return (
+                  <div
+                    key={n}
+                    onClick={() => blow(n)}
+                    className={`cake-tier my-[3px] md:my-[4px] ${lit ? "tier-lit" : ""}`}
+                    style={{
+                      width: `${widthPct}%`,
+                      minWidth: `min(${250 + row * 24}px, 95vw)`,
+                      minHeight: "84px",
+                      padding: "14px 56px",
+                    }}
+                  >
+                    <span className={`tier-text font-cairo text-xs sm:text-sm md:text-base ${lit ? "revealed" : ""}`}>
+                      {relationshipStory[n - 1]}
+                    </span>
+
+                    <div
+                      className={`candle-wrapper ${candleSide}`}
+                      title="اضغطي على الشمعة عشان تطفيها وتقرأي طبقة التورتة!"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        blow(n);
+                      }}
+                    >
+                      <div className="candle-stick">
+                        <div
+                          className={`flame ${lit ? "blown" : ""}`}
+                          style={{ animationDelay: `${(n * 0.13).toFixed(2)}s` }}
+                        />
+                        <div className={`smoke ${lit ? "puff" : ""}`} />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={blowAll}
+              className={`text-white font-bold text-lg md:text-xl px-10 py-4 rounded-full shadow-[0_0_25px_rgba(255,0,51,0.6)] hover:scale-105 active:scale-95 transition-all cursor-pointer ${
+                allDone
+                  ? "bg-pink-700 pointer-events-none"
+                  : "bg-gradient-to-r from-neonred via-pink-600 to-red-800"
+              }`}
+            >
+              {allDone ? "🎉 كل سنة وإنتي طيبة يا جرجورتي! ❤️" : "🌬️ اطفي كل الشموع يجرجورتي"}
+            </button>
+
+            <div
+              ref={promiseRef}
+              className="max-w-3xl w-full px-4 text-center overflow-hidden transition-all duration-1000"
+              style={{ maxHeight: allDone ? 1400 : 0, opacity: allDone ? 1 : 0 }}
+            >
+              <div className="mt-12 p-8 md:p-12 bg-gradient-to-br from-pink-950/60 via-red-950/50 to-black/80 rounded-3xl border-2 border-neonpink shadow-[0_0_40px_rgba(255,20,147,0.4)] backdrop-blur-md relative">
+                <div className="text-4xl md:text-5xl mb-4">🎉👑❤️</div>
+                <h3 className="text-2xl md:text-3xl font-amiri font-bold text-neonpink mb-6">
+                  كل سنة وإنتي طيبة يا كتكوتي!
+                </h3>
+                <p className="font-amiri text-xl md:text-2xl leading-loose text-white">
+                  ( النهارده اول عيد ميلاد ليكي و احنا مع بعض و انشاء الله مش الاخير النهارده انتي هتحتفلي بعيد
+                  ميلادك في بيتكو و الله اعلم يمكن السنه الجيه نحتفل بيه في بيتنا بس الي عايز اقولهولك اني بجد بحبك
+                  اوب و مش هسيبك و كل سنه و انتي طيبه يكتوكتي و كل سنه و انتي بنوتي و صحبتي و اختي و انشاء الله
+                  مراتي و امي و سندي و ضهري بجد بحبك اوي اوي اوي )
+                </p>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      /* ---------------- GIFT MODAL ---------------- */
+      const EMOJIS = ["🌹", "💐", "🌷", "🌺", "🌯", "🧸", "🐈", "🐱", "🍫", "🍬", "🎁", "🎀", "❤️", "✨", "🎉", "🎂"];
+      function GiftModal({ open, onClose }) {
+        const containerRef = useRef(null);
+
+        const items = useMemo(
+          () =>
+            Array.from({ length: 120 }, (_, i) => ({
+              e: EMOJIS[i % EMOJIS.length],
+              left: Math.random() * 94,
+              top: Math.random() * 94,
+              speed: Math.random() * 3 + 1,
+            })),
+          []
+        );
+
+        useEffect(() => {
+          if (!open) return;
+          const move = (fn) => {
+            containerRef.current?.querySelectorAll(".liquid-emoji").forEach((el) => {
+              el.style.transform = fn(parseFloat(el.dataset.speed || "1"));
+            });
+          };
+          const onOrient = (ev) => {
+            const x = ev.gamma || 0;
+            const y = Math.max(-90, Math.min(90, ev.beta || 0));
+            move((s) => `translate(${x * s * 1.6}px, ${y * s * 1.6}px)`);
+          };
+          const onMouse = (ev) => {
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            const x = ((ev.clientX - cx) / cx) * 50;
+            const y = ((ev.clientY - cy) / cy) * 50;
+            move((s) => `translate(${x * s * 1.4}px, ${y * s * 1.4}px)`);
+          };
+
+          const DOE = window.DeviceOrientationEvent;
+          if (DOE && typeof DOE.requestPermission === "function") {
+            DOE.requestPermission()
+              .then((st) => st === "granted" && window.addEventListener("deviceorientation", onOrient))
+              .catch(() => undefined);
+          } else {
+            window.addEventListener("deviceorientation", onOrient);
+          }
+          window.addEventListener("mousemove", onMouse);
+          return () => {
+            window.removeEventListener("deviceorientation", onOrient);
+            window.removeEventListener("mousemove", onMouse);
+          };
+        }, [open]);
+
+        if (!open) return null;
+
+        return (
+          <div className="fixed inset-0 z-[200] bg-darkbg/95 flex items-center justify-center overflow-y-auto py-8">
+            <div ref={containerRef} className="relative w-full min-h-full flex flex-col items-center justify-center overflow-hidden p-4">
+              {items.map((it, i) => (
+                <div
+                  key={i}
+                  className="liquid-emoji"
+                  data-speed={it.speed}
+                  style={{ left: `${it.left}vw`, top: `${it.top}vh` }}
+                >
+                  {it.e}
+                </div>
+              ))}
+
+              <button
+                onClick={onClose}
+                className="fixed top-6 right-6 z-50 text-white bg-red-900/90 hover:bg-neonred px-5 py-2.5 rounded-full font-bold shadow-lg transition-all cursor-pointer"
+              >
+                ✕ إغلاق
+              </button>
+
+              <div className="relative z-30 text-center bg-black/80 p-6 md:p-10 rounded-3xl backdrop-blur-md border-2 border-neonpink max-w-2xl w-full shadow-[0_0_40px_rgba(255,20,147,0.4)] my-auto">
+                <p className="text-pink-300 font-bold text-lg md:text-xl mb-3">دول على قدي يجرجورتي 😂❤️</p>
+                <div className="bg-red-950/40 rounded-2xl p-4 my-4 border border-pink-800/40 space-y-2 text-2xl md:text-3xl tracking-widest">
+                  <div>🌹💐🌷🌺🌹💐🌷🌺🌹</div>
+                  <div>🌯🌯🌯🌯🌯🌯🌯🌯🌯</div>
+                  <div>🧸🧸🧸🧸🧸🧸🧸🧸🧸</div>
+                  <div>🐈🐱🐈🐱🐈🐱🐈🐱🐈</div>
+                  <div>🎁🎀🍫🍬🎁🎀🍫🍬🎁</div>
+                  <div>❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
+                </div>
+                <p className="font-amiri text-lg md:text-2xl text-pink-100 leading-loose mt-4 bg-red-950/30 p-5 rounded-2xl border border-pink-900/50">
+                  (ياريت تعجبك الهدايا جبتلك ورد و شاورما و دباديب و قطه عشان بتحبيها عارف انها المرادي ديجاتل بس انشاءالله المره الجاية تبقي في بيتي و اجيلك كل الي تعوزيه اسف هو ده الي قدرت اقدمه بس انا بجد فكرت فيها كتير لقيت اني ممكن اوصلك حاجه اونلاين بس للاسف معيش فلوس كان نفسي اجبلك اي حاجه بس معرفتش اسف لو خيبت املك يكتكوتي و الف هنا و شفا عالشاورما🤗)
+                </p>
+                <p className="font-cairo text-xl md:text-2xl font-extrabold text-white leading-relaxed mt-5">
+                  اي وفي يوم عيد ميلادك احب اقلك كل سنه وانتي طيبه ❤️🎉
+                </p>
+                <p className="text-xs text-gray-400 mt-3">
+                  (هزي الموبايل أو حركي الماوس عشان الهدايا تتحرك معاكي زي السائل!)
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      /* ---------------- HELPERS FOR APP ---------------- */
+      function useInView(threshold) {
+        const ref = useRef(null);
+        const [seen, setSeen] = useState(false);
+        useEffect(() => {
+          const el = ref.current;
+          if (!el) return;
+          const io = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((e) => e.isIntersecting)) {
+                setSeen(true);
+                io.disconnect();
+              }
+            },
+            { threshold }
+          );
+          io.observe(el);
+          return () => io.disconnect();
+        }, [threshold]);
+        return [ref, seen];
+      }
+
+      function CountUp({ target, run, className }) {
+        const [v, setV] = useState(0);
+        useEffect(() => {
+          if (!run) return;
+          let raf = 0;
+          const t0 = performance.now();
+          const tick = (now) => {
+            const p = Math.min((now - t0) / 1600, 1);
+            setV(Math.round(target * (1 - Math.pow(1 - p, 3))));
+            if (p < 1) raf = requestAnimationFrame(tick);
+          };
+          raf = requestAnimationFrame(tick);
+          return () => cancelAnimationFrame(raf);
+        }, [run, target]);
+        return <span className={className}>{v}</span>;
+      }
+
+      function TimeBox({ value, label, hot = false }) {
+        return (
+          <div className="flex flex-col items-center p-5 bg-red-950/40 rounded-3xl border border-red-800/50 backdrop-blur-md shadow-[0_0_20px_rgba(255,0,51,0.15)]">
+            <span className={`text-4xl md:text-6xl font-extrabold mb-1 ${hot ? "text-neonred animate-pulse" : "text-white"}`}>
+              {value}
+            </span>
+            <span className="text-xs md:text-sm text-pink-300 uppercase tracking-wider">{label}</span>
+          </div>
+        );
+      }
+
+      /* ---------------- APP MAIN COMPONENT ---------------- */
+      function App() {
+        const [preIntroDone, setPreIntroDone] = useState(false);
+        const [preIntroLeaving, setPreIntroLeaving] = useState(false);
+        const [leaving, setLeaving] = useState(false);
+        const [entered, setEntered] = useState(false);
+        const [introReady, setIntroReady] = useState(false);
+        const [giftOpen, setGiftOpen] = useState(false);
+        const [now, setNow] = useState(Date.now());
+        const [langIdx, setLangIdx] = useState(0);
+        const [langVisible, setLangVisible] = useState(true);
+
+        const [statsRef, statsSeen] = useInView(0.35);
+        const [finalRef, finalSeen] = useInView(0.25);
+
+        useEffect(() => {
+          document.body.style.overflowY = entered ? "auto" : "hidden";
+        }, [entered]);
+
+        useEffect(() => {
+          if (!preIntroDone) return;
+          const t = setTimeout(() => setIntroReady(true), 4000);
+          return () => clearTimeout(t);
+        }, [preIntroDone]);
+
+        useEffect(() => {
+          const id = setInterval(() => setNow(Date.now()), 1000);
+          return () => clearInterval(id);
+        }, []);
+
+        useEffect(() => {
+          const id = setInterval(() => {
+            setLangVisible(false);
+            setTimeout(() => {
+              setLangIdx((i) => (i + 1) % birthdayWordsList.length);
+              setLangVisible(true);
+            }, 450);
+          }, 2400);
+          return () => clearInterval(id);
+        }, []);
+
+        const proceedToHeart = () => {
+          setPreIntroLeaving(true);
+          setTimeout(() => setPreIntroDone(true), 800);
+        };
+
+        const start = () => {
+          setLeaving(true);
+          setTimeout(() => setEntered(true), 900);
+        };
+
+        const diff = Math.abs(now - START_DATE);
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        return (
+          <div className="font-cairo text-gray-100">
+            {/* 0. PRE-INTRO MESSAGE */}
+            {!preIntroDone && (
+              <div
+                className="fixed inset-0 bg-darkbg z-[110] flex flex-col items-center justify-center p-4 overflow-y-auto transition-opacity duration-700 ease-in-out"
+                style={{ opacity: preIntroLeaving ? 0 : 1 }}
+              >
+                <div className="glowing-box bg-gradient-to-br from-black/90 via-[#1f0008]/95 to-black/90 backdrop-blur-md rounded-3xl p-7 md:p-12 max-w-2xl w-full text-center relative my-auto">
+                  <div className="text-4xl md:text-5xl mb-4 animate-bounce">💌✨</div>
+                  <h2 className="text-neonpink font-bold text-xl md:text-2xl mb-5 font-cairo">
+                    رسالة ليكي قبل ما نبدأ يا جرجورتي ❤️
+                  </h2>
+                  <p className="font-amiri text-xl md:text-2xl leading-loose text-pink-100">
+                    (النهاردة جرجورتي هتم ال ١٩ سنه و بجد ده حدث استنيته كتير كتسان و النهاردة عارف ان الوقت الي الرساله وصلت فيه ممكن اكون نايم بس يعني معلش اهي ظروف و هتعدي انا اسف اني مش هعرف اقضيه معاكي بس يعني حاولت ابذل جهدي اني ابسط حتي وانا مش موجود و يارب تعجبك الي عملته ليكي النهاردة و كل سنه. انتي جمبي يجرجورتي ♥️)
+                  </p>
+                  <button
+                    onClick={proceedToHeart}
+                    className="mt-8 bg-gradient-to-r from-neonred via-neonpink to-red-700 text-white font-bold text-lg md:text-xl px-10 py-3.5 rounded-full shadow-[0_0_25px_rgba(255,20,147,0.7)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  >
+                    كملي يا كتكوتي ❤️
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* 1. INTRO HEART */}
+            {preIntroDone && !entered && (
+              <div
+                className="fixed inset-0 bg-darkbg z-[100] flex flex-col items-center justify-center p-4 overflow-hidden transition-opacity duration-1000 ease-in-out"
+                style={{ opacity: leaving ? 0 : 1 }}
+              >
+                <div className="relative w-[94vw] h-[94vw] max-w-[600px] max-h-[600px] flex items-center justify-center">
+                  <WordHeart words={loveWordsList} play className="w-full h-full heart-zoom-out" />
+                </div>
+
+                <p
+                  className={`text-pink-300/90 text-sm md:text-lg mt-2 font-amiri text-center transition-opacity duration-1000 ${
+                    introReady ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  كل كلمة "بحبك" بلغات العالم لفت حوالين بعضها عشان ترسم قلبي ليكي ❤️
+                </p>
+
+                <button
+                  onClick={start}
+                  className={`mt-5 transition-all duration-700 bg-gradient-to-r from-neonred via-neonpink to-red-700 text-white font-bold text-lg md:text-xl px-10 py-3.5 rounded-full shadow-[0_0_25px_rgba(255,20,147,0.7)] hover:scale-105 active:scale-95 cursor-pointer ${
+                    introReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"
+                  }`}
+                >
+                  خشي يجرجورتي ❤️
+                </button>
+              </div>
+            )}
+
+            {/* MAIN */}
+            <main
+              className="transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: entered ? 1 : 0 }}
+            >
+              {/* 2. COUNTER */}
+              <section className="min-h-[85vh] flex flex-col items-center justify-center py-20 px-4 bg-gradient-to-b from-darkbg via-[#160006] to-[#1a0005] relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,51,0.12),transparent_70%)]" />
+                <span className="text-neonred text-sm md:text-base font-bold tracking-widest mb-2 z-10">
+                  24 / 09 / 2026 ❤️ بداية حكايتنا
+                </span>
+                <h2 className="text-3xl md:text-5xl font-amiri text-white mb-12 text-center drop-shadow-[0_0_12px_rgba(255,20,147,0.6)] z-10">
+                  من يوم ما عرفتك وحياتي كلها نورت
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 z-10 w-full max-w-3xl" dir="ltr">
+                  <TimeBox value={days} label="Days / يوم" />
+                  <TimeBox value={hours} label="Hours / ساعة" />
+                  <TimeBox value={minutes} label="Minutes / دقيقة" />
+                  <TimeBox value={seconds} label="Seconds / ثانية" hot />
+                </div>
+              </section>
+
+              {/* 3. MAP */}
+              <section className="min-h-screen flex flex-col items-center justify-center py-20 px-4 bg-[#140004] relative">
+                <h2 className="text-3xl md:text-5xl font-amiri text-white mb-4 text-center drop-shadow-[0_0_15px_rgba(255,20,147,0.6)]">
+                  رغم المسافات إنتي الأقرب لقلبي ❤️
+                </h2>
+                <p className="text-pink-300/80 text-center mb-10 text-sm md:text-lg">
+                  خيط القدر الأحمر المربوط بين إيدينا من شبرا الخيمة لحد ديروط
+                </p>
+                <LdrMap />
+              </section>
+
+              {/* 4. FIGHTS */}
+              <section className="min-h-screen flex flex-col items-center justify-center py-20 px-4 bg-darkbg">
+                <span className="text-neonred font-bold text-sm tracking-widest mb-2">من شاتنا الحقيقي • 15 موقف منفصل</span>
+                <h2 className="text-3xl md:text-5xl font-amiri text-white mb-4 text-center drop-shadow-md">
+                  خناقاتنا وقمصنا وغيرتي عليكي 😠❤️
+                </h2>
+                <p className="text-gray-400 text-center mb-12 text-sm md:text-base">
+                  كل موقف حصل بينا في الشات بتوقيته وتاريخه في كارت لوحده
+                </p>
+                <ChatCards data={realFightSituations} accent="border-red-900/50" />
+                <div className="mt-14 p-6 px-10 rounded-full bg-gradient-to-r from-red-950/60 via-pink-950/60 to-red-950/60 border border-pink-500/40 shadow-[0_0_25px_rgba(255,20,147,0.3)]">
+                  <p className="text-2xl md:text-4xl font-amiri text-pink-200 text-center">" ورغم كل ده لسه بنحب بعض ❤️ "</p>
+                </div>
+              </section>
+
+              {/* 5. MEMORIES */}
+              <section className="min-h-screen flex flex-col items-center justify-center py-20 px-4 bg-[#140005]">
+                <span className="text-neonpink font-bold text-sm tracking-widest mb-2">من شاتنا الحقيقي • 25 ذكرى منفصلة</span>
+                <h2 className="text-3xl md:text-5xl font-amiri text-white mb-4 text-center drop-shadow-md">
+                  ضحكنا ودلعنا وتفاصيلنا الحلوة ✨🥰
+                </h2>
+                <p className="text-gray-400 text-center mb-12 text-sm md:text-base">
+                  25 موقف حقيقي من شاتنا، كل موقف لوحده بيفكرنا بأحلى لحظاتنا
+                </p>
+                <ChatCards data={realSweetMemories} accent="border-pink-900/50" />
+              </section>
+
+              {/* 6. STATS */}
+              <section
+                ref={statsRef}
+                className="py-24 px-4 bg-gradient-to-b from-[#140005] to-darkbg flex flex-col items-center border-t border-red-900/30"
+              >
+                <span className="text-pink-400 text-sm font-bold mb-2">تحليل 24,604 رسالة بيننا 💬</span>
+                <h2 className="text-3xl md:text-5xl font-amiri text-center mb-16 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                  إحصائيات حبنا الحقيقية في الشات 📊❤️
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl">
+                  <div className="bg-black/60 border border-red-900/50 rounded-3xl p-8 flex flex-col items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(255,0,51,0.15)]">
+                    <div className="absolute -top-6 -right-6 text-8xl opacity-10">❤️</div>
+                    <h3 className="text-xl md:text-2xl text-pink-200 mb-8 font-bold">مين قال "بحبك" أكتر في الشات؟</h3>
+                    <div className="flex w-full items-end justify-around gap-6 h-48 pt-6">
+                      <div className="flex flex-col items-center w-1/3 h-full justify-end">
+                        <CountUp target={180} run={statsSeen} className="text-3xl md:text-4xl font-extrabold text-neonred mb-2 drop-shadow-[0_0_8px_rgba(255,0,51,0.8)]" />
+                        <div
+                          className="w-full bg-gradient-to-t from-red-900 to-neonred rounded-t-xl transition-all duration-1000 ease-out"
+                          style={{ height: statsSeen ? "85%" : "0%" }}
+                        />
+                        <span className="mt-3 text-base font-bold text-white">أوفص 👑</span>
+                      </div>
+                      <div className="flex flex-col items-center w-1/3 h-full justify-end">
+                        <CountUp target={135} run={statsSeen} className="text-2xl md:text-3xl font-bold text-pink-400 mb-2" />
+                        <div
+                          className="w-full bg-gradient-to-t from-pink-950 to-pink-500 rounded-t-xl transition-all duration-1000 ease-out"
+                          style={{ height: statsSeen ? "64%" : "0%" }}
+                        />
+                        <span className="mt-3 text-base font-bold text-pink-200">جرجورتي ❤️</span>
+                      </div>
+                    </div>
+                    <p className="text-xs md:text-sm text-gray-400 mt-6">بالأرقام والإثباتات من الـ 640 صفحة: أنا بحبك أكتر 😉❤️</p>
+                  </div>
+
+                  <div className="bg-black/60 border border-pink-900/50 rounded-3xl p-8 flex flex-col items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(255,20,147,0.15)]">
+                    <div className="absolute -bottom-5 -left-5 text-8xl opacity-10">🥺</div>
+                    <h3 className="text-xl md:text-2xl text-pink-200 mb-4 font-bold text-center">كم مرة وحشنا بعض في الشات؟</h3>
+                    <div className="flex flex-col items-center justify-center h-44">
+                      <CountUp target={420} run={statsSeen} className="text-6xl md:text-7xl font-extrabold text-neonpink drop-shadow-[0_0_15px_rgba(255,20,147,0.7)]" />
+                      <p className="text-xs md:text-sm text-gray-300 mt-3">(منهم 261 مرة وحشتيني و 159 مرة وحشتك)</p>
+                      <p className="text-pink-300/90 mt-2 font-semibold text-sm">ومع ذلك بتوحشيني كل ثانية أكتر بكتير ❤️</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PROMISE */}
+                <div className="w-full max-w-3xl mt-16 relative">
+                  <div className="glowing-box bg-gradient-to-br from-black/80 via-[#1f0008]/90 to-black/80 backdrop-blur-md rounded-3xl p-8 md:p-12 text-center relative">
+                    <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-5xl drop-shadow-lg">💌</span>
+                    <h4 className="text-neonpink font-bold text-lg md:text-xl mb-4 mt-2">رسالة ووعد من قلبي ليكي</h4>
+                    <p className="font-amiri text-xl md:text-2xl leading-loose text-pink-100">
+                      ( هاجر عارف اني بوحشك كتير و بتاخر عليكي في الرد كتير بس بجد غصب عني انا اسف و بجد بحبك اوي يمامي
+                      و نفسي افضل في حضنك كده مقمش بس عشان اوصل لكده قدامي مشوار طويل لازما نخوضه سوا و انشاء الله اوصله
+                      في اقرب وقتممكن و هشتغلعلي نفسي و اظبط جسمي و هعمل عضلات و بصي هنحقق كل امانينا سوا و ده وعد خدته
+                      عل نفسي قبلما اقوله ليكي و بجد بحبك اوي و كل سنه و انتي طيبه يا محور الكون و محور حياتي )
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 7. CAKE */}
+              <Cake />
+
+              {/* 8. WISH BOX */}
+              <section className="py-20 px-4 bg-[#160005] flex flex-col items-center">
+                <div className="w-full max-w-2xl glowing-box bg-black/60 p-6 md:p-10 rounded-3xl relative">
+                  <h3 className="text-2xl md:text-3xl font-amiri text-neonpink mb-3 text-center">
+                    ✨ أمنيتك إيه السنة دي يا جرجورتي؟
+                  </h3>
+                  <p className="text-xs md:text-sm text-gray-400 text-center mb-6">
+                    الصندوق بيكبر معاكي كل ما تكتبي أكتر.. اكتبي كل اللي بتتمنيه وخديها سكرين وابعتيهالي ❤️
+                  </p>
+                  <textarea
+                    onInput={(e) => {
+                      const t = e.currentTarget;
+                      t.style.height = "";
+                      t.style.height = t.scrollHeight + "px";
+                    }}
+                    className="w-full bg-red-950/20 border border-pink-800/50 focus:border-neonpink focus:outline-none text-white rounded-2xl p-5 min-h-[140px] resize-none text-base md:text-lg leading-relaxed transition-all"
+                    placeholder="اكتبي الي اتمنتيه هنا وخديها اسكرين وابعتيهالي..."
+                  />
+                </div>
+              </section>
+
+              {/* 9. GIFT */}
+              <section className="min-h-[70vh] py-20 px-4 bg-darkbg flex flex-col items-center justify-center relative overflow-hidden">
+                <h2 className="text-2xl md:text-4xl text-pink-200 mb-4 font-amiri text-center">
+                  🎁 هديتك مستنياكي.. اضغطي على الصندوق وهزي التليفون!
+                </h2>
+                <p className="text-gray-400 text-sm mb-10 text-center">
+                  (جواها ورد وشاورما ودباديب وقطط وشوكولاتات كتير على قدي 😂❤️)
+                </p>
+                <div
+                  onClick={() => setGiftOpen(true)}
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95 animate-bounce"
+                >
+                  <div className="text-[9rem] md:text-[12rem] drop-shadow-[0_0_30px_rgba(255,20,147,0.6)] select-none">🎁</div>
+                </div>
+              </section>
+
+              {/* 10. FINAL HEART */}
+              <section
+                ref={finalRef}
+                className="min-h-screen py-20 px-4 bg-black flex flex-col items-center justify-center overflow-hidden relative"
+              >
+                <div className="text-center relative z-10 px-4 mb-4">
+                  <h1 className="text-3xl md:text-6xl font-bold font-amiri text-white animate-happy-birthday">
+                    كل سنة وإنتي طيبة يا جرجورتي ❤️
+                  </h1>
+                  <p className="text-pink-400 mt-3 text-sm md:text-lg">
+                    بكل لغات العالم الكلمات بتلف حوالين بعضها عشان ترسم قلب عيد ميلادك
+                  </p>
+                </div>
+
+                <div className="relative w-[94vw] h-[94vw] max-w-[600px] max-h-[600px] flex items-center justify-center z-10">
+                  <WordHeart words={birthdayWordsList} play={finalSeen} className="w-full h-full" />
+                </div>
+
+                <div
+                  className="mt-4 text-2xl md:text-4xl font-cairo font-bold text-neonpink h-12 transition-opacity duration-500 z-10 text-center"
+                  style={{ opacity: langVisible ? 1 : 0 }}
+                >
+                  {birthdayWordsList[langIdx]} ❤️
+                </div>
+              </section>
+
+              <footer className="bg-black py-8 text-center border-t border-red-950/60 relative z-10">
+                <p className="text-xs md:text-sm text-pink-500 font-amiri font-bold tracking-wider">
+                  صنع بحب من كتكوتك أوفص ❤️
+                </p>
+              </footer>
+            </main>
+
+            <GiftModal open={giftOpen} onClose={() => setGiftOpen(false)} />
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
